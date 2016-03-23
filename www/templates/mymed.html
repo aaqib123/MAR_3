@@ -1,0 +1,20 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button class="button button-icon icon ion-chevron-left ion-ios-arrow-left" ng-click="closeModal1()">Back</button>
+        <h1 class="title">Medicines</h1>
+    </ion-header-bar>
+    <ion-content>
+<!--        <div class="card">
+            <div class="item item-text-wrap">
+                {{warning}}
+            </div>
+        </div>-->
+       
+        <ion-list  can-swipe="true">
+            <ion-item class="item" ng-repeat="item in mymed">
+                {{ item.med_name}}
+
+            </ion-item>
+        </ion-list>
+    </ion-content>>
+</ion-modal-view>

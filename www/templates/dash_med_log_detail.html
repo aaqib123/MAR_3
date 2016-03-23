@@ -1,0 +1,87 @@
+
+<ion-modal-view>
+    <ion-header-bar>
+        <button class="button button-icon icon ion-chevron-left ion-ios-arrow-left" ng-click="closeModal()">Back</button>
+
+        <h1 class="title"> Update</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="item item-divider">
+            <p style="margin-left: 40%">{{ formodal.med_name}}</p>  
+        </div>
+        <label class="item item-input ">
+            <span class="input-label">Dosage</span>
+            <input id="dosage" style="text-align: right;" type="number" placeholder="enter amount      " ng-model="log.amount_taken">
+        </label>
+        <label class="item item-input ">
+            <span class="input-label">Date</span>
+            <input style="text-align: right;" type="date" ng-model="log.date">
+        </label>
+        <label class="item item-input ">
+            <span class="input-label">Time</span>
+            <input style="text-align: right;" type="time" ng-model="log.time">
+        </label>
+
+        <div class="list">
+            <div class="item item-divider">
+                <p style="margin-left: 40%">Status</p>  
+            </div>
+            <label class="item item-radio">
+                <input type="radio" id="radio1" name="radios" value="taken" ng-model="log.status"> 
+                <div class="item-content">
+                    Taken
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+            <label class="item item-radio">
+                <input type="radio" id="radio2" name="radios" value="missed" ng-model="log.status"> 
+                <div class="item-content">
+                    Missed
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label>
+
+        </div>
+
+
+        <!--        <label class="item item-input item-stacked-label">
+                    <div  class="aaqib">
+                        <input type="radio" id="radio1" name="radios" value="taken" ng-model="og.status"> 
+                        <label for="radio1"> 
+                            taken 
+                        </label> 
+                    </div>
+                    <div class="aaqib">
+                        <input type="radio" id="radio2" name="radios" value="missed" ng-model="log.status"> 
+                        <label for="radio2"> 
+                            missed 
+                        </label> 
+                    </div>
+                                <div class="aaqib">
+                                    <input type="radio" id="radio3" name="radios" value="dont_know" ng-model="log.status"> 
+                                    <label for="radio3"> 
+                                        forgot 
+                                    </label> 
+                                </div>
+        
+                </label>-->
+        <ion-list>
+            <div class="item item-divider">
+                <p style="margin-left: 40%">Other</p>  
+            </div>
+            <ion-checkbox   ng-if="loc_status == false" ng-model="checkbox.stat" type="checkbox"/>
+            Do not remind at this location
+            </ion-checkbox>
+            <ion-item class="item item-input ">
+                <span style="margin-left: 10px;" class="input-label">Remind Later</span>
+                <input style="text-align: right;" type="time" ng-model="checkbox.later" ng-change="remindlater(checkbox.later)">
+            </ion-item>
+        </ion-list>
+        <button  ng-if="((log.status == 'missed') && checkbox.later =='' ) || (log.status == 'taken' && log.amount_taken > 0)  " class="button button-positive button-block" ng-click="take_med(checkbox.stat)">
+            Save
+        </button>
+<!--        {{checkbox}}</br>
+        {{log}}</br></br>
+        {{themed}}-->
+    </ion-content>
+</ion-modal-view>

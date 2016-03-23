@@ -1,0 +1,27 @@
+# view AndroidManifest.xml #generated:6
+-keep class com.ionicframework.marthree.CordovaApp { <init>(...); }
+
+# view AndroidManifest.xml #generated:12
+-keep class de.appplant.cordova.plugin.background.ForegroundService { <init>(...); }
+
+# view AndroidManifest.xml #generated:14
+-keep class de.appplant.cordova.plugin.localnotification.ClearReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:15
+-keep class de.appplant.cordova.plugin.localnotification.ClickActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:18
+-keep class de.appplant.cordova.plugin.localnotification.RestoreReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:13
+-keep class de.appplant.cordova.plugin.localnotification.TriggerReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:17
+-keep class de.appplant.cordova.plugin.notification.ClearReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:23
+-keep class de.appplant.cordova.plugin.notification.ClickActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:16
+-keep class de.appplant.cordova.plugin.notification.TriggerReceiver { <init>(...); }
+

@@ -1,0 +1,69 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button class="button button-icon icon ion-chevron-left ion-ios-arrow-left" ng-click="closeModal1('log history')">Home</button>
+        <h1 class="title">Log</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <!--            <div class="item item-divider">
+                            Today:
+                        </div>
+            
+            
+                        <div  ng-repeat="item in daily_log|  orderBy:selectedItem"  >
+                            <a ng-if="item.status=='no_entry'" ng-class="{false:'did',true:'tobe'}[item.status == 'no_entry'] "  class="item item-icon-left " href="#"  ng-click="Update_LOG(item)">
+                                <a  ng-class="{true:'tobe',false:'did'}[item.status == 'no_entry']"  class="item item-icon-left did" href="#"  ng-click="Update_LOG(item)">
+            
+                                <h2>  {{ item.med_name}}</h2>
+                                <span class="item-note" >
+                                    {{item.time}} 
+                                </span>
+                                <p>{{item.status}} </p>     
+                                <p>{{item.date}} </p>
+                            </a>
+                        </div>-->
+
+            <div class="item item-divider">
+                History
+            </div>
+            <!--            <label class="item item-input item-select">
+                            <div class="input-label">
+                                sort
+                            </div>
+                            <select  ng-model="selectedItem">
+                                <option ng-selected="reverse = 'true'">date</option>
+                                <option ng-selected="reverse = 'false'">time</option>
+                                <option ng-selected="reverse = 'false'">med_name</option>
+                                <option ng-selected="reverse = 'false'">status</option>
+                            </select>
+                        </label>-->
+
+            <div  ng-repeat="item in daily_log| orderBy: 'date':'true'"  >
+                <!--<a  ng-class="{false:'did', true:'tobe'}[item.status == 'no_entry']"  class="item item-icon-left " href="#"  ng-click="Update_LOG(item)">-->
+                <a  ng-class="{tobe:item.status == 'no_entry',did:item.status == 'taken',miss:item.status == 'missed'}" 
+                    ng-model='item.status' 
+                    class="item  " 
+                    href="#"  
+                    ng-click="Update_LOG(item)">
+
+                    <h2>  {{ item.med_name}}</h2>
+                    <span class=" item-note badge badge-assertive">{{item.amount_taken}}</span>
+                   <span class="logtime item-note" >
+                        {{item.time}}  
+                    </span>  
+                    <p ng-if='item.status != "no_entry"'>{{item.status}}</p>   
+                     <p ng-if='item.status == "no_entry"'>No entry made</p> 
+                    <p > {{item.date}} </p>
+                </a>
+            </div>
+
+
+
+
+
+        </div>
+<!--        <button class="button button-negative button-block" ng-click="daychange()">
+            Notif reset - do not press
+        </button>-->
+    </ion-content>>
+</ion-modal-view>

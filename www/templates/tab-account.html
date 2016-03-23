@@ -1,0 +1,55 @@
+<ion-view title="Account">
+    <ion-content class="has-header padding">
+
+        <!--{{sleeptime}}-->
+
+        <div class="list">
+            <a class="item" ng-click="openModal2()">
+                Set home location
+                <span class="item-note">
+                    {{locstatus| limitTo : 18}}..
+                </span>
+            </a>
+            <label class="item item-input">
+                <span class="input-label">set sleep time</span>
+                <input style="text-align: right;" type="time" ng-model="sleeptime"   ng-change="sleeptimefunc(sleeptime)">
+            </label>
+
+            <ion-toggle   ng-change="change()"  ng-model="settings.sleep">
+                Track sleep 
+            </ion-toggle>
+            <ion-toggle   ng-change="change()"  ng-model="settings.loc">
+                Track location 
+            </ion-toggle>
+            <ion-toggle  ng-change="change()"  ng-model="settings.notifications">
+                Toggle notifications
+            </ion-toggle>
+            <ion-toggle  ng-change="change()"  ng-model="settings.push">
+                Forced notifications
+            </ion-toggle>
+            <p>use forced notifications if default notifications do not work as expected</p>
+        </div>
+        <div class="list">
+            <a class="item" ng-click="openM()">
+                Add Medication
+                <span class="item-note">
+                    +
+                </span>
+            </a>
+            <ion-list  can-swipe="true">
+                <ion-item  class="item" ng-repeat="item in selection1" >
+
+                    {{ item.med_name}}
+                    <ion-option-button class="button-positive" ng-click="edit(item.med_id)">Edit</ion-option-button>
+                    <ion-option-button class="button-assertive icon ion-trash-a"   ng-click="del(item.med_id)"></ion-option-button>
+                </ion-item>
+            </ion-list>
+
+        </div>
+        <button class="button button-positive button-block" ng-click="logout()">
+            Logout
+        </button>
+    </ion-content>
+
+</ion-view>
+

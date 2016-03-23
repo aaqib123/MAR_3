@@ -1,0 +1,93 @@
+<ion-view title="MARThree">
+    <ion-content class="has-header padding">
+
+        <!--        <button class="button button-positive button-block" ng-click="togglea()">
+                    toggle
+                </button>-->
+        <div class="list">
+            <div class="item item-divider">
+                Due Today: 
+                <!--{{secs}}<br>{{timetest}}-->
+            </div>
+
+
+            <div  ng-repeat="item in daily_log|  orderBy:'time'"  >
+                <div ng-if="(item.status == 'no_entry') && (item.date == curr_date)" >
+
+                    <a  ng-class="{false:'did',true:'tobe'}[item.status == 'no_entry'] "  class="item  " href="#"  ng-click="Update_LOG(item)">
+                        <h2>  {{ item.med_name}}</h2>
+                        <span class="item-note" style="color:black !important;" >
+                            {{item.time}} </br>
+
+                        </span>
+                        <p ng-if="curr_hour*1<((item.time | limitTo : 2) * 1)">
+                            {{ (curr_hour * 1 - (item.time | limitTo : 2) * 1) | abs}} 
+                            hours remaining 
+                        </p>   
+                        <p ng-if="(curr_hour*1>((item.time | limitTo : 2) * 1) || (curr_time > item.time))">overdue </p>  
+                        <p>{{item.date}} </p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="list">
+            <div class="item item-divider">My Schedule
+            </div>
+            <!--ng-click="haha(item)"-->
+            <a class="item " href="#"  ng-repeat="item in mymed" ng-click="haha(item)">
+
+                <h2>  {{ item.med_name}}</h2>
+                <span class="item-note" >
+                    pills left : {{item.med_left}}
+                </span>
+                <p ng-repeat="x in item.schedule"> 
+                    {{x.sch_time}} :
+                    <span   ng-if="z == true" ng-repeat="(y,z) in x.days | filter:y">
+                        <span ng-class="{true: 'tagbox'}[y.toString() == curr_date_name.toString()]">  
+                            {{y}} 
+                        </span>
+                    </span>
+                </p>      
+            </a>
+        </div>
+        <button class="button button-positive button-block" ng-click="openModal1()">
+            Old Logs
+        </button>
+        <!--                <div class="list card">
+                            <div class="item item-divider">asdf</div>
+                            <div class="item item-body">
+                                <div>
+                                    home : {{lat + '  || '+ long}}<br>
+                                    currlocation: {{currlat + ' || ' + currlong }}<br>
+                                    distance from home : {{dist}}<br>
+                                    notified : {{notified}}</br>
+                                    {{nongps}}<br>
+                                    {{curdist1}}<br>
+                                    {{loc_status}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list card">
+                            <div class="item item-divider">acce</div>
+                            <div class="item item-body">
+                                <div>
+                                    X : {{X}}</br>
+                                    y : {{Y}}</br>
+                                    z : {{Z}}</br>
+                                    t : {{timestamp}}</br>
+                                    ms : {{milliseconds}}</br>
+                                    vi = {{VI}}</br>   
+                                    gap : {{timegap}}</br>
+                                    moved = {{move}}</br>
+                                    nomove: {{nomoveforlong}}</br>
+                                    sleepytime: {{sleepytime}}</br>
+                                    {{ass}}
+                                   
+                                </div>
+                            </div>
+                        </div>
+                </br>local : {{ notify}}</br></br></br>-->
+
+    </ion-content>
+</ion-view>

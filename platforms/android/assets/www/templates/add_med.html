@@ -1,0 +1,47 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button class="button button-icon icon ion-chevron-left ion-ios-arrow-left" ng-click="closeM()">Back</button>
+        <h1 class="title">Medicines</h1>
+    </ion-header-bar>
+    <ion-content>
+
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="test"> 
+            </label>
+        </div>
+
+        <ion-list>
+
+
+            <ion-checkbox  ng-repeat="med in firevar| filter:test" 
+                           ng-click="toggleSelection(med.id, med.name, med.checked)" 
+                           value="{{med.name}}" 
+                           name="{{med.name}}" 
+                           id="{{med.id}}" 
+                           ng-model="med.checked"  
+                           ng-checked="med.checked" type="checkbox"/>
+
+            {{med.name}} 
+            </ion-checkbox>
+            <!--{{newmedhold}}-->
+            </br></br>
+        </ion-list>
+
+
+    </ion-content>>        
+    <div style="position: absolute; bottom: 0px; width: 100%">
+        <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+                <form name="aform">
+                    <input type="text"   ng-model="newmedhold.name" placeholder="Add new meds " required>
+                </form>
+            </label>
+            <button ng-if="newmedhold.name != ''" ng-click="newmedicine()"  class="button button-small">
+                Submit
+            </button>
+        </div>
+
+    </div>
+</ion-modal-view>

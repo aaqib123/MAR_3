@@ -1,0 +1,119 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button class="button button-icon icon ion-chevron-left ion-ios-arrow-left" ng-click="closeModal1()">Back</button>
+        <h1 class="title"> Update </h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <div class="item item-divider">
+                REFILLS
+            </div>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">refill count</span>
+                <input type="number" placeholder="enter amount" ng-model="refill.refill_data">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">refill date</span>
+                <input type="date" placeholder="enter date" ng-model="refill.refill_date">
+            </label>
+            <button class="button button-positive button-block" ng-click="edit_refill(refill)">
+                refill
+            </button>
+
+        </div>
+
+
+        <p class="linesep" > SET REMINDER BY </p>
+
+
+        <div class="list list-inset">
+            <div class="item item-divider">
+                Time Schedule
+            </div>
+            <!--            <div class="item item-button-right">
+                            <input type="time" placeholder="choose time" ng-model="selection.sch_time" >
+                            <button class="button button-ios-rounded button-assertive">
+                                <i class="icon ion-clock"></i>
+                            </button>
+                        </div>   -->
+
+            <div class="item ">
+                <input type="time" placeholder="choose time" ng-model="selection.sch_time" >
+            </div>            
+            <label class="item item-input item-stacked-label">
+                <div  class="abrar" ng-repeat="day in week">
+                    <input type="checkbox" id="{{$index}}" ng-model="selection.days[day]"  > 
+                    <label for="{{$index}}"> 
+                        {{day}} 
+                    </label> 
+                </div>
+            </label>
+
+        </div>
+
+
+        <p class="linesep" > OR </p>
+
+
+
+        <div class="list list-inset">
+
+            <div class="item item-divider">
+                Interval Schedule
+            </div>
+            <div class="item ">
+                Start at <input type="time" placeholder="choose time" ng-model="selection.sch_time" >
+            </div>  
+            <div class="item ">
+                remind every x hours  <input type="number" placeholder="enter x" ng-model="selection.every" >
+            </div>      
+            <div class="item ">
+                stop after x reminders  <input type="number" placeholder="enter x" ng-model="selection.stopafter" >
+            </div>   
+            <label class="item item-input item-stacked-label">
+                <div  class="abrar" ng-repeat="day in week">
+                    <input type="checkbox" id="{{$index}}" ng-model="selection.days[day]"  > 
+                    <label for="{{$index}}"> 
+                        {{day}} 
+                    </label> 
+                </div>
+            </label>
+        </div>
+
+        <!--{{selection}}-->
+        </br>
+        <button class="button button-positive button-block" ng-click="add()">
+            Save
+        </button>
+
+        <!--        <div class="list">
+                    <div class="item item-divider">
+                        Current SCHEDULE
+                    </div>
+                    <a class="item item-icon-left" ng-repeat="day in schedule">
+                        <i class="icon ion-clock"></i>
+                        {{day.sch_time}}
+                        <span  ng-repeat="(key,value) in day.days" class="item-note">
+                            {{key + ","}}
+                        </span>
+                    </a>
+                </div>-->
+        <div class="item item-divider">
+            Current Schedule
+        </div>
+        <ion-list  can-swipe="true">
+            <ion-item  class="item" ng-repeat="day in schedule">
+                <i class="icon ion-clock"></i>
+                {{day.sch_time}}
+                <span  ng-repeat="(key,value) in day.days" class="item-note">
+                    {{key + ","}}
+                </span>
+                <p ng-if="(day.every == 1)"> repeats every {{day.every}} hour </p>
+                <p ng-if="(day.every > 1)"> repeats every {{day.every}} hours </p>
+                <ion-option-button class="button-assertive icon ion-trash-a"   ng-click="del_schedule(day)"></ion-option-button>
+            </ion-item>
+        </ion-list>
+        {{check}}
+
+    </ion-content>>
+</ion-modal-view>
